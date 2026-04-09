@@ -43,6 +43,19 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter", "FocusGained", "WinEnte
   end,
 })
 
+vim.api.nvim_create_autocmd("User", {
+  desc = "Open the explorer after restoring a session",
+  group = vim.api.nvim_create_augroup("user_session_explorer", { clear = true }),
+  pattern = "PersistenceLoadPost",
+  callback = function()
+    vim.defer_fn(function()
+      if package.loaded.snacks then
+        Snacks.explorer.reveal()
+      end
+    end, 100)
+  end,
+})
+
 vim.api.nvim_create_user_command("ReloadConfig", function()
   for name in pairs(package.loaded) do
     if name == "config.options" or name == "config.keymaps" or name == "config.autocmds" then

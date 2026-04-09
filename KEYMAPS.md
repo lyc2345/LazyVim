@@ -177,6 +177,8 @@
 
 ## Sessions / Quit
 
+- dashboard `s`: 還原目前 cwd session
+- dashboard `S`: 選擇 session
 - `<leader>qs`: 還原 session
 - `<leader>qS`: 選擇 session
 - `<leader>ql`: 還原上次 session
