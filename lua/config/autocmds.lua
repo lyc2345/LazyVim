@@ -56,3 +56,29 @@ vim.api.nvim_create_user_command("ReloadConfig", function()
 
   vim.notify("Core config reloaded. Restart Neovim for plugin spec changes.", vim.log.levels.INFO)
 end, { desc = "Reload Neovim config" })
+
+vim.api.nvim_create_user_command("NvimUpdatesEnable", function()
+  local plugin_updates = require("config.plugin_updates")
+  plugin_updates.set(true)
+  vim.notify("Plugin update checks enabled in " .. plugin_updates.local_config_path(), vim.log.levels.INFO)
+end, { desc = "Enable lazy.nvim plugin update checks" })
+
+vim.api.nvim_create_user_command("NvimUpdatesDisable", function()
+  local plugin_updates = require("config.plugin_updates")
+  plugin_updates.set(false)
+  vim.notify("Plugin update checks disabled in " .. plugin_updates.local_config_path(), vim.log.levels.WARN)
+end, { desc = "Disable lazy.nvim plugin update checks" })
+
+vim.api.nvim_create_user_command("NvimUpdatesToggle", function()
+  local plugin_updates = require("config.plugin_updates")
+  local enabled = plugin_updates.toggle()
+  local level = enabled and vim.log.levels.INFO or vim.log.levels.WARN
+  local message = enabled and "Plugin update checks enabled." or "Plugin update checks disabled."
+  vim.notify(message .. " Updated " .. plugin_updates.local_config_path(), level)
+end, { desc = "Toggle lazy.nvim plugin update checks" })
+
+vim.api.nvim_create_user_command("NvimUpdatesStatus", function()
+  local plugin_updates = require("config.plugin_updates")
+  local status = plugin_updates.status_text()
+  vim.notify("Plugin update checks are " .. status .. ". Source: " .. plugin_updates.local_config_path(), vim.log.levels.INFO)
+end, { desc = "Show lazy.nvim plugin update check status" })

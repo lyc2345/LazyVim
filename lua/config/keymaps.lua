@@ -10,6 +10,9 @@ keymap("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 keymap("n", "<leader>n+", "<C-a>", { desc = "Increment number" })
 keymap("n", "<leader>n-", "<C-x>", { desc = "Decrement number" })
 
+-- plugin update checks
+keymap("n", "<leader>uP", "<cmd>NvimUpdatesToggle<cr>", { desc = "Plugin Update Checks" })
+
 -- window management
 keymap("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })
 keymap("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally" })

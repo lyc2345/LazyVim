@@ -1,5 +1,15 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local plugin_updates = require("config.plugin_updates")
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  if not plugin_updates.enabled() then
+    vim.api.nvim_echo({
+      { "lazy.nvim is missing and plugin updates are disabled.\n", "ErrorMsg" },
+      { "Copy your plugin cache to this machine or set `nvim_updates_disabled = false` in `lua/config/local.lua`.\n", "WarningMsg" },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
@@ -40,7 +50,7 @@ require("lazy").setup({
   },
   install = { colorscheme = { "tokyodark", "habamax" } },
   checker = {
-    enabled = true, -- check for plugin updates periodically
+    enabled = not vim.g.nvim_updates_disabled, -- check for plugin updates periodically
     notify = false, -- notify on update
   }, -- automatically check for plugin updates
   performance = {

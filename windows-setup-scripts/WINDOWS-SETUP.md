@@ -98,9 +98,25 @@ If you want them to persist, add them to your PowerShell profile instead of typi
 If the Windows machine cannot reach GitHub or npm at all, start with this order:
 
 1. Use the copied config and lazy plugin cache.
-2. Verify editing, Telescope, which-key, and basic UI work.
-3. Disable AI, DAP, or any plugin that still tries to fetch dependencies.
-4. Re-enable those features later when you have network access or an internal mirror.
+2. Disable plugin update checks with `:NvimUpdatesDisable`.
+3. Verify editing, Telescope, which-key, and basic UI work.
+4. Disable AI, DAP, or any plugin that still tries to fetch dependencies.
+5. Re-enable those features later when you have network access or an internal mirror.
+
+The current update-check flag is available inside Neovim as:
+
+```lua
+vim.g.nvim_updates_disabled
+```
+
+The single persistent config source is:
+
+```lua
+-- %LOCALAPPDATA%\nvim\lua\config\local.lua
+return {
+  nvim_updates_disabled = true,
+}
+```
 
 ## 8. Likely first things to verify in this config
 
