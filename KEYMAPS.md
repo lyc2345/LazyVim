@@ -96,6 +96,7 @@
 - `<leader>th`: 水平 terminal
 - `<leader>tv`: 垂直 terminal
 - `<leader>tg`: lazygit
+- `<leader>tG`: tig，目前 cwd
 - `<leader>tn`: node terminal
 - `<leader>tp`: python terminal
 - `<C-\>`: 開關 toggleterm
@@ -184,6 +185,11 @@
 
 ## Git
 
+- `<leader>gg`: lazygit，使用 git root
+- `<leader>gG`: lazygit，使用目前 cwd
+- `<leader>gt`: tig，目前 branch，使用 git root
+- `<leader>gta`: tig --all，所有 branches，使用 git root
+- `<leader>gT`: tig，使用目前 cwd
 - `<leader>gs`: git status
 - `<leader>gc`: git commits
 - `<leader>gS`: git stash
