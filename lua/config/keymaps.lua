@@ -20,6 +20,8 @@ keymap("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" })
 keymap("n", "<leader>wx", "<cmd>close<cr>", { desc = "Close current split" })
 keymap("n", [[\w]], "<cmd>close<cr>", { desc = "Close current split" })
 keymap("n", "<C-w>w", "<cmd>close<cr>", { desc = "Close current split" })
+keymap("n", "<C-w>h", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+keymap("n", "<C-w>l", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 -- NOTE: Some terminals cannot send distinct keycodes for Ctrl+Shift+key.
 keymap("n", "<C-S-h>", "<C-w>H", { desc = "Move window left" })

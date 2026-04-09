@@ -77,6 +77,7 @@
 - `<leader>bP`: 關閉所有未 pin 的 buffers
 - `<leader>bj`: 選擇 buffer
 - `<S-h>` / `<S-l>`: 上一個 / 下一個 buffer
+- `<C-w>h` / `<C-w>l`: 上一個 / 下一個 buffer
 - `[b` / `]b`: 上一個 / 下一個 buffer
 - `[B` / `]B`: 左移 / 右移 buffer
 
