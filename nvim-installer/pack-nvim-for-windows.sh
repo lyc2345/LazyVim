@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-CONFIG_SRC="${HOME}/.dotfile/.config/nvim"
+CONFIG_SRC="${HOME}/.dotfile/nvim"
 LAZY_SRC="${HOME}/.local/share/nvim/lazy"
 OUT_DIR="${1:-${CONFIG_SRC}/dist/windows-pack}"
 TIMESTAMP="$(date +"%Y%m%d-%H%M%S")"
