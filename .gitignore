@@ -10,3 +10,5 @@ lua/config/local.lua
 
 .DS_STORE
 dist/*
+lazy-lock.json
+
