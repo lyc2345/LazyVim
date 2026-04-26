@@ -47,6 +47,29 @@
 - 按 `<leader>?` 可以看目前 buffer 的快捷鍵
 - 按 `<C-w><Space>` 可以看視窗相關快捷鍵
 - AI 需要先設定 `AVANTE_OPENAI_API_KEY` 或 `OPENAI_API_KEY`
+- 標註 `(custom)` 表示自訂覆蓋了 LazyVim 預設行為，看別人教學時要注意
+
+## Symbol 查找
+
+游標放在 symbol 上：
+
+- `gd`: 跳到 definition
+- `gr`: 找出所有 references（**這個 symbol 在哪邊被用到**）
+- `gI`: 跳到 implementation
+- `gy`: 跳到 type definition
+- `gD`: 跳到 declaration
+- `K`: hover 看文件
+- `<leader>cr`: rename symbol
+- `<leader>ca`: code action
+
+整檔 / 整個 workspace 看 symbol 列表：
+
+- `<leader>ss`: 目前檔案的 symbols（picker 列出）
+- `<leader>sS`: workspace symbols
+- `<leader>cs`: trouble 開 symbols 樹狀視窗（停留式）
+- `<leader>cS`: trouble 開 LSP references / definitions / implementations（停留式）
+
+picker 結果上的常用鍵：`<CR>` 跳過去、`<C-v>` 垂直開、`<C-x>` 水平開、`<Esc>` / `q` 關閉。
 
 ## Search
 
@@ -77,19 +100,21 @@
 - `<leader>bP`: 關閉所有未 pin 的 buffers
 - `<leader>bj`: 選擇 buffer
 - `<S-h>` / `<S-l>`: 上一個 / 下一個 buffer
-- `<C-w>h` / `<C-w>l`: 上一個 / 下一個 buffer
+- `<C-w>h` / `<C-w>l`: 上一個 / 下一個 buffer (custom，原本是 window 操作)
 - `[b` / `]b`: 上一個 / 下一個 buffer
 - `[B` / `]B`: 左移 / 右移 buffer
 
 ## Windows
 
-- `<leader>wv`: 垂直分割
-- `<leader>ws`: 水平分割
-- `<leader>we`: 平衡視窗大小
-- `<leader>wx`: 關閉目前視窗
-- `\w`: 關閉目前視窗
-- `<C-w>w`: 關閉目前視窗
-- `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>`: 切換視窗
+> 注意：以下 `<leader>w*` 系列是 custom 加的（LazyVim 預設要按 `<C-w>` 系列才是 split 操作）。
+
+- `<leader>wv`: 垂直分割 (custom)
+- `<leader>ws`: 水平分割 (custom)
+- `<leader>we`: 平衡視窗大小 (custom)
+- `<leader>wx`: 關閉目前視窗 (custom)
+- `\w`: 關閉目前視窗 (custom)
+- `<C-w>w`: 關閉目前視窗 (custom，原本 vim 預設是「跳到下個 window」)
+- `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>`: 切換視窗（同時也會跳 tmux pane）
 - `<C-S-h>` / `<C-S-j>` / `<C-S-k>` / `<C-S-l>`: 移動視窗位置
 - `<C-Left>` / `<C-Right>` / `<C-Up>` / `<C-Down>`: 調整視窗大小
 
@@ -118,7 +143,7 @@
 - `<leader>ar`: 重新整理 AI
 - `<leader>as`: 停止目前請求
 - `<leader>at`: 顯示 / 隱藏 AI
-- `<leader>ap`: 切換 provider，可在 `codex` 和 `claude` 之間切換
+- `<leader>ap` 可在 `codex` 和 `claude` 之間切換 provider
 - Claude 需要先設定 `AVANTE_ANTHROPIC_API_KEY`
 
 ## LSP
@@ -166,7 +191,7 @@
 
 ## Editing
 
-- `jj`: 離開 insert mode
+- `jj`: 離開 insert mode (custom，注意 toggleterm 裡是 `jk` 才回 normal)
 - `<C-s>`: 存檔
 - `<leader>n+`: 數字加一
 - `<leader>n-`: 數字減一
