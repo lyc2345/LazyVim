@@ -15,6 +15,10 @@ return {
       opts.picker.sources.projects = vim.tbl_deep_extend("force", opts.picker.sources.projects or {}, {
         confirm = { "tcd", "picker_explorer" },
       })
+      opts.picker.sources.explorer = vim.tbl_deep_extend("force", opts.picker.sources.explorer or {}, {
+        hidden = true,
+        ignored = true,
+      })
 
       if opts.dashboard and opts.dashboard.preset and opts.dashboard.preset.keys then
         opts.dashboard.preset.keys = vim.tbl_filter(function(item)
