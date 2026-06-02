@@ -34,3 +34,17 @@ keymap("n", "<C-Left>", "<C-w><", { desc = "Resize window narrower" })
 keymap("n", "<C-Right>", "<C-w>>", { desc = "Resize window wider" })
 keymap("n", "<C-Up>", "<C-w>+", { desc = "Resize window taller" })
 keymap("n", "<C-Down>", "<C-w>-", { desc = "Resize window shorter" })
+
+-- Source legacy vim keymaps from ~/.vim
+local function source_if_exists(path)
+  local expanded = vim.fn.expand(path)
+  if vim.fn.filereadable(expanded) == 1 then
+    local ok, err = pcall(vim.cmd, "source " .. expanded)
+    if not ok then
+      vim.notify("Error sourcing " .. expanded .. ": " .. tostring(err), vim.log.levels.WARN)
+    end
+  end
+end
+
+source_if_exists("~/.vim/keymap.vim")
+source_if_exists("~/.vim/shortcutmap.vim")
